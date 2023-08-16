@@ -1,4 +1,4 @@
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const asyncValidate = (values) => {
   return sleep(2000).then(() => {

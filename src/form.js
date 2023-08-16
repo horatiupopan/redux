@@ -8,15 +8,16 @@ const renderField = (
 ) => (
   <div>
     <label>{label}</label>
-    <div className={asyncValidating ? 'async-validating' : ''}>
+    <div>
       <input {...input} type={type} placeholder={label} />
       {touched && error && <span>{error}</span>}
+      {asyncValidating && <span>Loading</span>}
     </div>
   </div>
 );
 
 let ContactForm = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, asyncValidating } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -35,7 +36,7 @@ let ContactForm = props => {
           label="Last Name"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={asyncValidating}>Submit</button>
     </form>
   );
 };
@@ -44,7 +45,7 @@ ContactForm = reduxForm({
   form: 'contact',
   validate,
   asyncValidate,
-  asyncChangeFields: ['lastName']
+  asyncBlurFields: ['lastName']
 })(ContactForm);
 
 export default ContactForm;
