@@ -1,14 +1,14 @@
 const validate = values => {
-    const errors = {}
+    const errors = {};
     if (!values.firstName) {
-      errors.firstName = 'Required'
+      errors.firstName = 'Required';
     } else if (values.firstName.length > 10) {
-      errors.firstName = 'Must be 10 characters or less'
+      errors.firstName = 'Must be 10 characters or less';
     }
     if (!values.lastName) {
-      errors.lastName = 'Required'
+      errors.lastName = 'Required';
     }
-    return errors
+    return errors;
   }
 
   export default validate;

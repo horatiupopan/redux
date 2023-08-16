@@ -3,9 +3,10 @@ import './App.css';
 import ContactForm from './form.js'
 
 function App() {
-  const submit = values => {
-    // print the form values to the console
-    console.log(values)
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const submit = async values => {
+    await sleep(300);
+    window.alert(JSON.stringify(values, 0, 2));
   }
   return (
     <div className="App">

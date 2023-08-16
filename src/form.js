@@ -16,7 +16,7 @@ const renderField = (
 );
 
 let ContactForm = props => {
-  const { handleSubmit } = props
+  const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -37,14 +37,14 @@ let ContactForm = props => {
       </div>
       <button type="submit">Submit</button>
     </form>
-  )
-}
+  );
+};
 
 ContactForm = reduxForm({
   form: 'contact',
   validate,
   asyncValidate,
   asyncChangeFields: ['lastName']
-})(ContactForm)
+})(ContactForm);
 
-export default ContactForm
+export default ContactForm;
