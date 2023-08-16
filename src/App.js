@@ -1,12 +1,7 @@
 import './App.css';
 import ContactForm from './form.js';
-import styled from 'styled-components';
-
-// const Title = styled.h1`
-//   font-size: 1.5em;
-//   text-align: center;
-//   color: #BF4F74;
-// `;
+import Title from './title';
+import {ThemeProvider} from 'styled-components';
 
 function App() {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -16,8 +11,10 @@ function App() {
   };
   return (
     <div className="App">
-      {/* <Title>Contact Form</Title> */}
-      <ContactForm onSubmit={submit}/>
+      {/* <ThemeProvider> */}
+        <Title>Contact Form</Title>
+        <ContactForm onSubmit={submit}/>
+      {/* </ThemeProvider> */}
     </div>
   );
 }

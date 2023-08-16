@@ -1,17 +1,28 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import validate from './validate'
-import asyncValidate from './asyncValidate'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import validate from './validate';
+import asyncValidate from './asyncValidate';
+import styled from 'styled-components';
+
+const ErrorMessage = styled.span`
+  color: red;
+`;
+
+const AsyncField = styled(Field)`
+  ${ErrorMessage} {
+    color: #BF4F74;
+  }
+`;
 
 const renderField = (
-  { input, label, type, meta: { asyncValidating, touched, error } },
+  { className, input, label, type, meta: { asyncValidating, touched, error } },
 ) => (
-  <div>
+  <div className={className}>
     <label>{label}</label>
     <div>
       <input {...input} type={type} placeholder={label} />
-      {touched && error && <span>{error}</span>}
-      {asyncValidating && <span>Loading</span>}
+      {touched && error && <ErrorMessage>{error}</ErrorMessage>}
+      {asyncValidating && <ErrorMessage>Loading</ErrorMessage>}
     </div>
   </div>
 );
@@ -29,7 +40,7 @@ let ContactForm = props => {
         />
       </div>
       <div>
-        <Field
+        <AsyncField
           name="lastName"
           type="text"
           component={renderField}
