@@ -1,12 +1,14 @@
+import {useTranslation} from "react-i18next";
+
 const validate = values => {
     const errors = {};
     if (!values.firstName) {
-      errors.firstName = 'Required';
+      errors.firstName = 'required';
     } else if (values.firstName.length > 10) {
-      errors.firstName = 'Must be 10 characters or less';
+      errors.firstName = 'fnlength';
     }
     if (!values.lastName) {
-      errors.lastName = 'Required';
+      errors.lastName = 'required';
     }
     return errors;
   }

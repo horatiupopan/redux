@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import validate from './validate';
 import asyncValidate from './asyncValidate';
 import styled from 'styled-components';
+import {useTranslation} from "react-i18next";
 
 const ErrorMessage = styled.span`
   color: red;
@@ -14,21 +15,21 @@ const AsyncField = styled(Field)`
   }
 `;
 
-const renderField = (
-  { className, input, label, type, meta: { asyncValidating, touched, error } },
-) => (
-  <div className={className}>
-    <label>{label}</label>
-    <div>
-      <input {...input} type={type} placeholder={label} />
-      {touched && error && <ErrorMessage>{error}</ErrorMessage>}
-      {asyncValidating && <ErrorMessage>Loading</ErrorMessage>}
-    </div>
-  </div>
-);
-
 let ContactForm = props => {
   const { handleSubmit, asyncValidating } = props;
+  const {t, i18n} = useTranslation('common');
+  const renderField = (
+    { className, input, label, type, meta: { asyncValidating, touched, error } },
+  ) => (
+    <div className={className}>
+      <label>{label}</label>
+      <div>
+        <input {...input} type={type} placeholder={label} />
+        {touched && error && <ErrorMessage>{t(error)}</ErrorMessage>}
+        {asyncValidating && <ErrorMessage>{t('loading')}</ErrorMessage>}
+      </div>
+    </div>
+  );
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -36,7 +37,7 @@ let ContactForm = props => {
           name="firstName"
           type="text"
           component={renderField}
-          label="First Name"
+          label={t('firstname')}
         />
       </div>
       <div>
@@ -44,10 +45,10 @@ let ContactForm = props => {
           name="lastName"
           type="text"
           component={renderField}
-          label="Last Name"
+          label={t('lastname')}
         />
       </div>
-      <button type="submit" disabled={asyncValidating}>Submit</button>
+      <button type="submit" disabled={asyncValidating}>{t('submit')}</button>
     </form>
   );
 };

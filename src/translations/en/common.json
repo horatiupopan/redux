@@ -1,0 +1,10 @@
+{
+    "firstname": "First Name",
+    "lastname": "Last Name,",
+    "contactform": "Contact Form",
+    "submit": "Submit",
+    "required": "Required",
+    "fnlength": "Must be 10 characters or less",
+    "lnasync": "Last name cannot be Smith",
+    "loading": "Loading"
+}

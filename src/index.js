@@ -6,6 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducer.js';
+import {I18nextProvider} from "react-i18next";
+import i18next from "i18next";
+import common_fr from "./translations/fr/common.json";
+import common_en from "./translations/en/common.json";
+
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: 'fr',
+  resources: {
+      en: {
+          common: common_en
+      },
+      fr: {
+          common: common_fr
+      },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -15,9 +32,11 @@ const store = configureStore({
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <I18nextProvider i18n={i18next}>
+      <Provider store={store}>
+              <App/>
+      </Provider>
+    </I18nextProvider>
   </React.StrictMode>
 );
 

@@ -2,8 +2,10 @@ import './App.css';
 import ContactForm from './form.js';
 import Title from './title';
 import {ThemeProvider} from 'styled-components';
+import {useTranslation} from "react-i18next";
 
 function App() {
+  const {t, i18n} = useTranslation('common');
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const submit = async values => {
     await sleep(300);
@@ -11,10 +13,8 @@ function App() {
   };
   return (
     <div className="App">
-      {/* <ThemeProvider> */}
-        <Title>Contact Form</Title>
-        <ContactForm onSubmit={submit}/>
-      {/* </ThemeProvider> */}
+      <Title>{t('contactform')}</Title>
+      <ContactForm onSubmit={submit}/>
     </div>
   );
 }

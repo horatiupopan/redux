@@ -1,0 +1,10 @@
+{
+    "firstname": "Prenom",
+    "lastname": "Nom",
+    "contactform": "Formulaire de contact",
+    "submit": "Envoyer",
+    "required": "Requis",
+    "fnlength": "Le prenom doit contenir 10 caracteres ou moins",
+    "lnasync": "Le nom ne peut pas etre Smith",
+    "loading": "Chargement"
+}
