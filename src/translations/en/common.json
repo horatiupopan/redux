@@ -6,5 +6,6 @@
     "required": "Required",
     "fnlength": "Must be 10 characters or less",
     "lnasync": "Last name cannot be Smith",
-    "loading": "Loading"
+    "loading": "Loading",
+    "users": "Users"
 }

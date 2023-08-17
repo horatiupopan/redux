@@ -6,5 +6,6 @@
     "required": "Requis",
     "fnlength": "Le prenom doit contenir 10 caracteres ou moins",
     "lnasync": "Le nom ne peut pas etre Smith",
-    "loading": "Chargement"
+    "loading": "Chargement",
+    "users": "Utilisateurs"
 }

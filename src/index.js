@@ -10,6 +10,11 @@ import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 import common_fr from "./translations/fr/common.json";
 import common_en from "./translations/en/common.json";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Users from "./users.js";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -34,13 +39,30 @@ const changeLanguage = (lang) => {
   i18next.changeLanguage(lang);
 }
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <a href='/users'>Users</a>,
+  },
+  {
+    path: "/users",
+    element: <Users />,
+    children: [
+      {
+        path: "create",
+        element: <App />
+      },
+    ]
+  },
+]);
+
 root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <Provider store={store}>
         <button onClick={() => changeLanguage('en')}>EN</button>
         <button onClick={() => changeLanguage('fr')}>FR</button>
-        <App/>
+        <RouterProvider router={router} />
       </Provider>
     </I18nextProvider>
   </React.StrictMode>
