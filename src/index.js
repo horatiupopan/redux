@@ -13,7 +13,7 @@ import common_en from "./translations/en/common.json";
 
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: 'fr',
+  lng: navigator.language,
   resources: {
       en: {
           common: common_en
@@ -30,11 +30,17 @@ const store = configureStore({
   reducer: rootReducer
 });
 
+const changeLanguage = (lang) => {
+  i18next.changeLanguage(lang);
+}
+
 root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
       <Provider store={store}>
-              <App/>
+        <button onClick={() => changeLanguage('en')}>EN</button>
+        <button onClick={() => changeLanguage('fr')}>FR</button>
+        <App/>
       </Provider>
     </I18nextProvider>
   </React.StrictMode>
